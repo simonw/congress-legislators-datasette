@@ -19,23 +19,23 @@ def add_legislators(db, root):
     db["legislators"].drop(ignore=True)
     for filename in ("legislators-historical.yaml", "legislators-current.yaml"):
         data = yaml.safe_load(pathlib.Path(root / filename).read_text())
-    for item in data:
-        terms = item.pop("terms")
-        flattened = dict(flatten(item))
-        flattened["id"] = flattened["id_bioguide"]
-        flattened["name"] = flattened["name_first"] + " " + flattened["name_last"]
-        pk = (
-            db["legislators"]
-            .insert(flattened, alter=True, pk="id", column_order=("id", "name"))
-            .last_pk
-        )
-        for term in terms:
-            term["legislator_id"] = pk
-        db["legislator_terms"].insert_all(
-            terms,
-            alter=True,
-            foreign_keys=(("legislator_id", "legislators", "id"),),
-        )
+        for item in data:
+            terms = item.pop("terms")
+            flattened = dict(flatten(item))
+            flattened["id"] = flattened["id_bioguide"]
+            flattened["name"] = flattened["name_first"] + " " + flattened["name_last"]
+            pk = (
+                db["legislators"]
+                .insert(flattened, alter=True, pk="id", column_order=("id", "name"))
+                .last_pk
+            )
+            for term in terms:
+                term["legislator_id"] = pk
+            db["legislator_terms"].insert_all(
+                terms,
+                alter=True,
+                foreign_keys=(("legislator_id", "legislators", "id"),),
+            )
 
 
 def add_district_offices(db, root):
