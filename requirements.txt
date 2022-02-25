@@ -1,0 +1,5 @@
+datasette
+datasette-cluster-map
+datasette-graphql
+sqlite-utils
+PyYAML
