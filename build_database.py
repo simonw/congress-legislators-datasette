@@ -35,6 +35,7 @@ def add_legislators(db, root):
                 terms,
                 alter=True,
                 foreign_keys=(("legislator_id", "legislators", "id"),),
+                column_order=("legislator_id", "type", "state")
             )
 
 
