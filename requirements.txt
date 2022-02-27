@@ -2,5 +2,6 @@ datasette
 datasette-cluster-map
 datasette-graphql
 datasette-pretty-json
+datasette-copyable
 sqlite-utils
 PyYAML
