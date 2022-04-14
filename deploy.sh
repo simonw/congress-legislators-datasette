@@ -5,4 +5,5 @@ datasette publish cloudrun legislators.db \
   --install datasette-graphql \
   --install datasette-cluster-map \
   --install datasette-pretty-json \
-  --install datasette-copyable
+  --install datasette-copyable \
+  --extra-options="--setting sql_time_limit_ms 3000"
