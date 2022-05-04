@@ -11,7 +11,7 @@ jobs:
     - name: Check out unitedstates/congress-legislators
       uses: actions/checkout@v3
       with:
-        repository: congress-legislators
+        repository: unitedstates/congress-legislators
         path: congress-legislators
     - name: Set up Python
       uses: actions/setup-python@v3
