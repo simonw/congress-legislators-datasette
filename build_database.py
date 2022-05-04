@@ -109,8 +109,8 @@ if __name__ == "__main__":
     except ValueError:
         print("Usage: ... legislators.db ../path/to/congress-legislators")
         sys.exit(1)
-    db = sqlite_utils.Database("legislators.db")
-    root = pathlib.Path("../congress-legislators")
+    db = sqlite_utils.Database(db_file)
+    root = pathlib.Path(congress_legislators_path)
     add_legislators(db, root)
     add_district_offices(db, root)
     add_social_media(db, root)
